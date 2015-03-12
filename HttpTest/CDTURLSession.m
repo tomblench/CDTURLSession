@@ -45,6 +45,8 @@
     
     NSLog(@"dataTaskWithRequest");
     
+    // TODO - run Request Filters here, once we support them
+    
     NSURLSession *session = [NSURLSession sessionWithConfiguration:nil];
     NSURLSessionDataTask *task = [session dataTaskWithRequest:context.request completionHandler: ^void (NSData *_data, NSURLResponse *_response, NSError *_error) {
 
