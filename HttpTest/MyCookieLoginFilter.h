@@ -11,6 +11,11 @@
 
 @class CDTURLSessionFilterContext;
 
+/**
+ Sample implementation of a Response Filter:
+ Obtains cookie on receipt of a 401 response code and replays request.
+ */
+
 @interface MyCookieLoginFilter : NSObject<CDTURLSessionResponseFilter>
 
 @property NSURL *baseUrl;

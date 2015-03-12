@@ -10,4 +10,23 @@
 
 @implementation CDTURLSessionFilterContext
 
+- (id) init
+{
+    self = [super init];
+    if (self) {
+        _replayRequest = FALSE;
+    }
+    return self;
+}
+
+- (id) initWithRequest:(NSURLRequest*)request
+{
+    self = [super init];
+    if (self) {
+        _replayRequest = FALSE;
+        _request = request;
+    }
+    return self;
+}
+
 @end

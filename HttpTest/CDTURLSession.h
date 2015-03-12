@@ -11,6 +11,10 @@
 
 @class CDTURLSessionFilterContext;
 
+/** 
+ Façade class to NSURLSession with Request and Response filters.
+ */
+
 @interface CDTURLSession : NSObject
 
 - (id) init;

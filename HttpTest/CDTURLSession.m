@@ -15,7 +15,6 @@
 {
     self = [super init];
     if (self) {
-        //        _session = [NSURLSession sharedSession];
         _responseFilters = [NSMutableArray array];
     }
     return self;
@@ -30,9 +29,7 @@
 - (NSURLSessionDataTask *)dataTaskWithRequest:(NSURLRequest *)request
                             completionHandler:(void (^)(NSData *data, NSURLResponse *response, NSError *error))completionHandler
 {
-    CDTURLSessionFilterContext *context = [[CDTURLSessionFilterContext alloc] init];
-    context.replayRequest = NO;
-    context.request = request;
+    CDTURLSessionFilterContext *context = [[CDTURLSessionFilterContext alloc] initWithRequest:request];
     return [self dataTaskWithContext:context completionHandler:completionHandler];
     
 }
@@ -40,7 +37,6 @@
 - (NSURLSessionDataTask *)dataTaskWithContext:(CDTURLSessionFilterContext*)context
                             completionHandler:(void (^)(NSData *data, NSURLResponse *response, NSError *error))completionHandler
 {
-    // TODO
     // do request
     // run response filter before completion handler
     // retries?
@@ -51,13 +47,7 @@
     
     NSURLSession *session = [NSURLSession sessionWithConfiguration:nil];
     NSURLSessionDataTask *task = [session dataTaskWithRequest:context.request completionHandler: ^void (NSData *_data, NSURLResponse *_response, NSError *_error) {
-        // create 1st context
-        // TODO properly with ctor
-        //NSLog(@"Response %@", _response);
-        //NSLog(@"Responsefilters %@", _responseFilters);
-        
-        //NSLog(@"Responsefilters...");
-        NSLog(@"Responsefilters %@", _responseFilters);
+
         CDTURLSessionFilterContext *currentContext = context;
         context.response = _response;
         context.replayRequest = FALSE;
