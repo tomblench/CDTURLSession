@@ -6,10 +6,13 @@ Some of the concepts and names have been borrowed heavily from [Async Http Clien
 [ahc]: https://github.com/AsyncHttpClient/async-http-client
 
 # Sample Code
-The main class (`main.m`) shows an example of POSTing a new json document to the server.
+The main class (`main.m`) shows an example of POSTing a new json
+document to the server, obtaining a session cookie 'on demand' (by
+reacting to an HTTP status code).
 
 An instance of `MyCookieLoginFilter` - a class conforming to the
-`CDTResponseFilter` protocol - is added to the session's Response Filters as follows:
+`CDTResponseFilter` protocol - is added to the session's Response
+Filters as follows:
 
 ```
 MyCookieLoginFilter *myLoginFilter = [[MyCookieLoginFilter alloc] init];
